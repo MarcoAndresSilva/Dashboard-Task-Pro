@@ -1,1 +1,7 @@
-<p>task-item works!</p>
+<div class="task-item-container"
+    [ngClass]="{ 'completed-task': task?.completed }">
+    <div class="task-content">
+        <span class="task-title">{{ task?.title }}</span>
+        <p class="task-description">{{ task?.description }}</p>
+    </div>
+</div>

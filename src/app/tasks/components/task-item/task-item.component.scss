@@ -1,0 +1,36 @@
+:host {
+  display: block; // Importante para que margin-bottom funcione correctamente
+  margin-bottom: 10px;
+}
+
+.task-item-container {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+
+.task-title {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.task-description {
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Esta es la clase que [ngClass] aplicará */
+.completed-task {
+  background-color: #e8f5e9; /* Un verde suave */
+  border-left: 5px solid #4caf50; /* Un borde verde a la izquierda */
+  
+  .task-title, .task-description {
+    text-decoration: line-through;
+    color: #888;
+  }
+}
+

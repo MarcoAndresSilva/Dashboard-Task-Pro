@@ -1,14 +1,10 @@
 <div class="task-list-container">
     <h1>Mi Dashbord de Tareas en Angular</h1>
 
-    <ul class="task-list">
-        <li
-            *ngFor="let task of tasks"
-            [ngClass]="{ 'completed-task': task.completed }">
-            <div class="task-content">
-                <span>{{ task.title }}</span>
-                <p>{{ task.description }}</p>
-            </div>
-        </li>
-    </ul>
+    <div class="task-items">
+        <app-task-item 
+            *ngFor="let currentTask of tasks"
+            [task]="currentTask">
+        </app-task-item>
+    </div>
 </div>
