@@ -9,11 +9,11 @@ import { Task } from '../../models/task.model';
 })
 export class TaskItemComponent implements OnInit {
 
-  @Input() task: Task | undefined;
+  @Input() task: Task | undefined; // punto de entrada, permite recibir datos desde un componente padre
 
   constructor() { }
 
   ngOnInit(): void { 
-    console.log( 'TaskListComponent cargado', this.task );
+    console.log( 'Task Item Component cargado', this.task );
   }
 }
