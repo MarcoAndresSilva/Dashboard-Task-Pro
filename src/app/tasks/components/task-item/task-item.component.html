@@ -4,4 +4,9 @@
         <span class="task-title">{{ task?.title }}</span>
         <p class="task-description">{{ task?.description }}</p>
     </div>
+    <div class="task-actions">
+        <button (click)="onToggleComplete()">
+            {{task?.completed ? 'Marcar como pendiente' : 'marcar como completado'}}
+        </button>
+    </div>
 </div>

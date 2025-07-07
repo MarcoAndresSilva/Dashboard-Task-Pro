@@ -20,6 +20,15 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit(): void { 
     console.log( 'TaskListComponent cargado', this.tasks );
-    
+  }
+
+  handleToggleComplete(taskToUpdate: Task): void {
+    console.log('Evento recibido en el padre desde el hijo', taskToUpdate);
+
+    //buscamos la tarea en nuestro array y el cambio el estado
+    const task = this.tasks.find(t => t.id === taskToUpdate.id);  
+    if (task) {
+      task.completed = !task.completed;
+    }
   }
 }

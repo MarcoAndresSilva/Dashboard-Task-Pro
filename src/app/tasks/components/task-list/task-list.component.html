@@ -4,7 +4,8 @@
     <div class="task-items">
         <app-task-item 
             *ngFor="let currentTask of tasks"
-            [task]="currentTask">
+            [task]="currentTask"> // [task] es una propiedad de la clase TaskItemComponent y currentTask es una propiedad de la clase TaskListComponent
+            (toggleCompleted)="handleToggleComplete($event)" 
         </app-task-item>
     </div>
 </div>
