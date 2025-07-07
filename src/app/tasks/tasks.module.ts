@@ -5,6 +5,7 @@ import { TasksRoutingModule } from './tasks-routing.module';
 import { TasksComponent } from './tasks.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 
+import { MaterialModule } from '../shared/material.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { TaskListComponent } from './components/task-list/task-list.component';
   imports: [
     CommonModule,
     TasksRoutingModule,
+    MaterialModule
     ]
 })
 export class TasksModule { }

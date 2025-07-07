@@ -1,2 +1,14 @@
-<h1>DashBoard de Tareas</h1>
-<p>Componente de tareas <code>TaskListComponent</code> cargando correctamente a traves de <code>TasksModule</code>(lazy loading)</p>
+<div class="task-list-container">
+    <h1>Mi Dashbord de Tareas en Angular</h1>
+
+    <ul class="task-list">
+        <li
+            *ngFor="let task of tasks"
+            [ngClass]="{ completed: task.completed }">
+            <div class="task-content">
+                <span>{{ task.title }}</span>
+                <p>{{ task.description }}</p>
+            </div>
+        </li>
+    </ul>
+</div>
