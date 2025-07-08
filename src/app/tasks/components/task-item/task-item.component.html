@@ -13,23 +13,27 @@
 
 <!-- usare Material -->
 
-<mat-card class="task-item-container" [ngClass]="{ 'completed-task': task?.completed }">
-    <mat-card-header>
-        <mat-checkbox 
-            class="task-checkbox"
-            [checked]="task?.completed"
-            (change)="onToggleComplete()">
-        </mat-checkbox>
-        <mat-card-title>{{ task?.title }}</mat-card-title>
-        <mat-card-subtitle>{{ task?.description }}</mat-card-subtitle>
-    </mat-card-header>
+<mat-card [ngClass]="{ 'completed-task-card': task?.completed }">
+    <mat-card-content>
+        <div class="task-info">
+            <h3 class="task-title">{{ task?.title }}</h3>
+            <p class="task-description">{{ task?.description }}</p>
+        </div>
+    </mat-card-content>
 
-    <mat-card-actions aligbn="end">
+    <mat-card-actions align="end">
+        <button mat-stroked-button (click)="onToggleComplete()">
+            <mat-icon>{{ task?.completed ? 'undo' : 'check_circle_outline' }}</mat-icon>
+            <span>{{ task?.completed ? 'Reabrir' : 'Completar' }}</span>
+        </button>
+
         <button mat-icon-button color="primary" aria-label="Editar tarea">
             <mat-icon>edit</mat-icon>
         </button>
+
         <button mat-icon-button color="warn" aria-label="Eliminar tarea">
             <mat-icon>delete</mat-icon>
         </button>
     </mat-card-actions>
+
 </mat-card>

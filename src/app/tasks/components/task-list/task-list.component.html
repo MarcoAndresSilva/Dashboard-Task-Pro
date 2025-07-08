@@ -12,7 +12,7 @@
 
     <!-- usamos el componente de lista de Material -->
     <mat-list role="list">
-        <mat-list-item role="listitem" *ngFor="let currentTask of tasks">
+        <mat-list-item class="multiline-item" role="listitem" *ngFor="let currentTask of tasks">
             <app-task-item 
                 [task]="currentTask"
                 (toggleComplete)="handleToggleComplete($event)">

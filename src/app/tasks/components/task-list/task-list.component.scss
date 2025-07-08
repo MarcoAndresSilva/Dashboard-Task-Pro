@@ -7,3 +7,8 @@ h1 {
   color: #3f51b5; // El color primario de Indigo/Pink
 }
 
+.multiline-item {
+  height: auto !important;
+  padding: 0 !important;
+  margin-bottom: 16px; // Añadimos separación entre tarjetas
+}
