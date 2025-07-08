@@ -1,11 +1,22 @@
 <div class="task-list-container">
     <h1>Mi Dashbord de Tareas en Angular</h1>
 
-    <div class="task-items">
+    <!-- <div class="task-items">
         <app-task-item 
             *ngFor="let currentTask of tasks"
             [task]="currentTask"
             (toggleComplete)="handleToggleComplete($event)">
         </app-task-item>
-    </div>
+    </div> -->
+
+
+    <!-- usamos el componente de lista de Material -->
+    <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let currentTask of tasks">
+            <app-task-item 
+                [task]="currentTask"
+                (toggleComplete)="handleToggleComplete($event)">
+            </app-task-item>
+        </mat-list-item>
+    </mat-list>
 </div>

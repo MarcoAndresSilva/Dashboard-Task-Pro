@@ -1,4 +1,4 @@
-<div class="task-item-container"
+<!-- <div class="task-item-container"
     [ngClass]="{ 'completed-task': task?.completed }">
     <div class="task-content">
         <span class="task-title">{{ task?.title }}</span>
@@ -9,4 +9,27 @@
             {{task?.completed ? 'Marcar como pendiente' : 'marcar como completado'}}
         </button>
     </div>
-</div>
+</div> -->
+
+<!-- usare Material -->
+
+<mat-card class="task-item-container" [ngClass]="{ 'completed-task': task?.completed }">
+    <mat-card-header>
+        <mat-checkbox 
+            class="task-checkbox"
+            [checked]="task?.completed"
+            (change)="onToggleComplete()">
+        </mat-checkbox>
+        <mat-card-title>{{ task?.title }}</mat-card-title>
+        <mat-card-subtitle>{{ task?.description }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-actions aligbn="end">
+        <button mat-icon-button color="primary" aria-label="Editar tarea">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" aria-label="Eliminar tarea">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>

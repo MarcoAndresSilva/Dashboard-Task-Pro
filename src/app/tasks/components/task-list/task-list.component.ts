@@ -7,12 +7,13 @@ import { Task } from '../../models/task.model';
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.scss'
 })
+
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [
     { id: 1, title: 'Configurar la arquitectura del proyecto', completed: true, description: 'Usar módulos y lazy loading.' },
     { id: 2, title: 'Crear componente de lista de tareas', completed: true, description: 'Este componente.' },
     { id: 3, title: 'Crear componente de items de tareas', completed: true, description: 'Otro componente para cada tarea.' },
-    { id: 4, title: 'Añadir comunicación entre componentes', completed: false, description: 'Usar @Input y @Output.' },
+    { id: 4, title: 'Añadir comunicación entre componentes', completed: true, description: 'Usar @Input y @Output.' },
     { id: 5, title: 'Implementar un servicio para las tareas', completed: false, description: 'Mover la lógica a un servicio inyectable.' }
   ];
 
@@ -25,7 +26,7 @@ export class TaskListComponent implements OnInit {
   handleToggleComplete(taskToUpdate: Task): void {
     console.log('Evento recibido en el padre desde el hijo', taskToUpdate);
 
-    //buscamos la tarea en nuestro array y el cambio el estado
+    //buscamos la tarea en nuestro array y le cambio el estado
     const task = this.tasks.find(t => t.id === taskToUpdate.id);  
     if (task) {
       task.completed = !task.completed;
