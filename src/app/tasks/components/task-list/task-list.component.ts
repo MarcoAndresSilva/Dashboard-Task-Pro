@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { Task } from '../../models/task.model';
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'app-task-list',
@@ -9,27 +10,33 @@ import { Task } from '../../models/task.model';
 })
 
 export class TaskListComponent implements OnInit {
-  tasks: Task[] = [
-    { id: 1, title: 'Configurar la arquitectura del proyecto', completed: true, description: 'Usar módulos y lazy loading.' },
-    { id: 2, title: 'Crear componente de lista de tareas', completed: true, description: 'Este componente.' },
-    { id: 3, title: 'Crear componente de items de tareas', completed: true, description: 'Otro componente para cada tarea.' },
-    { id: 4, title: 'Añadir comunicación entre componentes', completed: true, description: 'Usar @Input y @Output.' },
-    { id: 5, title: 'Implementar un servicio para las tareas', completed: false, description: 'Mover la lógica a un servicio inyectable.' }
-  ];
+  tasks: Task[] = []; // array vacio que se llenara con el servicio
 
-  constructor() { }
+  constructor(private taskService: TaskService) { } // inyectamos el servicio
 
   ngOnInit(): void { 
     console.log( 'TaskListComponent cargado', this.tasks );
+    this.loadTasks();
   }
 
+  loadTasks(): void {
+    this.taskService.getTasks().subscribe(tasksFromService => {
+      console.log('tareas recibidas desde el servicio', tasksFromService);
+      
+      this.tasks = tasksFromService;
+    });
+  }
+
+  
   handleToggleComplete(taskToUpdate: Task): void {
-    console.log('Evento recibido en el padre desde el hijo', taskToUpdate);
-
-    //buscamos la tarea en nuestro array y le cambio el estado
-    const task = this.tasks.find(t => t.id === taskToUpdate.id);  
-    if (task) {
-      task.completed = !task.completed;
-    }
+    this.taskService.updateTask(taskToUpdate).subscribe(updatedTask =>{
+      console.log('tarea actualizada a travez del servicio', updatedTask);
+      
+      const index = this.tasks.findIndex(t => t.id === updatedTask.id);
+      if(index !== -1){
+        this.tasks[index] = updatedTask;
+      }
+    });
   }
+  
 }
