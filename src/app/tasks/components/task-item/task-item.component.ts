@@ -21,6 +21,4 @@ export class TaskItemComponent implements OnInit {
     console.log('componente hijo emitiendo valor hacia componente padre', this.task);
     this.toggleComplete.emit(this.task);// usamos emit para emitir el valor y enviarlo hacia arriba
   }
-
-
 }
