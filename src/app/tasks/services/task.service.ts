@@ -12,7 +12,10 @@ export class TaskService {
       { id: 2, title: 'Crear componente de lista de tareas', completed: true, description: 'Este componente.' },
       { id: 3, title: 'Crear componente de items de tareas', completed: true, description: 'Otro componente para cada tarea.' },
       { id: 4, title: 'Añadir comunicación entre componentes', completed: true, description: 'Usar @Input y @Output.' },
-      { id: 5, title: 'Implementar un servicio para las tareas', completed: true, description: 'Mover la lógica a un servicio inyectable.' }
+      { id: 5, title: 'Implementar un servicio para las tareas', completed: true, description: 'Mover la lógica a un servicio inyectable.' },
+      { id: 6, title: 'Crear un formulario para agregar tareas', completed: false, description: 'Usar Reactive Forms.' },
+      { id: 7, title: 'Implementar validaciones en el formulario', completed: false, description: 'Usar Validators.' },
+      { id: 8, title: 'Implementar una barra de navegación', completed: false, description: 'Usar Router.' },
     ];
 
   constructor() { }
@@ -25,8 +28,6 @@ export class TaskService {
   //update task se encargara de cambiar el estado de 'completed' de la tarea
   updateTask(taskToUpdate: Task): Observable<Task> {
     const task = this.tasks.find(t => t.id === taskToUpdate.id); 
-    console.log('tarea actualizada',task);
-    
     if (task) {
       task.completed = !task.completed;
     }
