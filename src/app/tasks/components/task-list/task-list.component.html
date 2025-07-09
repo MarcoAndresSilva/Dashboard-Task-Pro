@@ -1,7 +1,8 @@
 <div class="task-list-container">
     <h1>Mi Dashbord de Tareas en Angular</h1>
 
-    <!-- <div class="task-items">
+    <!-- sin material ui usamos el componente de items
+    <div class="task-items">
         <app-task-item 
             *ngFor="let currentTask of tasks"
             [task]="currentTask"
@@ -10,9 +11,12 @@
     </div> -->
 
 
-    <!-- usamos el componente de lista de Material -->
+    <!-- usamos el componente de lista de Material ui-->
     <mat-list role="list">
-        <mat-list-item class="multiline-item" role="listitem" *ngFor="let currentTask of tasks">
+        <mat-list-item 
+        class="multiline-item" 
+        role="listitem" 
+        *ngFor="let currentTask of tasks; trackBy: trackByTaskId">
             <app-task-item 
                 [task]="currentTask"
                 (toggleComplete)="handleToggleComplete($event)">
