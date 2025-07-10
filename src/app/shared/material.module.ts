@@ -5,13 +5,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogActions } from '@angular/material/dialog';
+import { MatDialogContent } from '@angular/material/dialog';
 
 const materialModules = [
   MatCardModule,
   MatButtonModule,
   MatListModule,
   MatIconModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatDialogActions,
+  MatDialogContent
 ];
 
 @NgModule({

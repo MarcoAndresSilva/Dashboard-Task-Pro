@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { TaskFormComponent } from '../../../tasks/components/task-form/task-form.component';
+import { TaskService } from '../../../tasks/services/task.service';
 
 @Component({
   selector: 'app-header',
@@ -8,12 +11,19 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
-  constructor () { }
+  constructor (private dialog: MatDialog, private taskService: TaskService ) { }
 
   onAddTask() {
-    console.log('Añadir tarea');
-    //TODO abrir el modal
+    const dialogRef = this.dialog.open(TaskFormComponent, {
+      width: '450px',
+    });
     
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('The dialog was closed with result:', result);
+        this.taskService.addTask(result);
+      }
+    });
   }
 
 }
