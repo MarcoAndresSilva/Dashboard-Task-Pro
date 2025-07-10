@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  constructor () { }
+
+  onAddTask() {
+    console.log('Añadir tarea');
+    //TODO abrir el modal
+    
+  }
+
 }

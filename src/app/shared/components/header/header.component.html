@@ -1,1 +1,11 @@
-<p>header works!</p>
+<nav class="main-nav">
+    <div class="nav-links">
+        <a routerLink="/tasks" routerLinkActive="active-link">Mis Tareas</a>
+        <a routerLink="/stats" routerLinkActive="active-link">Estadísticas</a>
+    </div>
+    <div class="nav-actions">
+        <button mat-raised-button color="accent" (click)="onAddTask()">
+            <mat-icon>Añadir Tarea</mat-icon>
+        </button>
+    </div>
+</nav>
