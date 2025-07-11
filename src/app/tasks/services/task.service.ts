@@ -4,6 +4,12 @@ import { Observable, BehaviorSubject, throwError, of } from 'rxjs'
 import { map, catchError, tap } from 'rxjs/operators';
 import { Task } from '../models/task.model';
 
+interface TodosApiResponse {
+  todos: Task[];
+  total : number;
+  skip: number;
+  limit: number
+}
 
 @Injectable({
   providedIn: 'root'
