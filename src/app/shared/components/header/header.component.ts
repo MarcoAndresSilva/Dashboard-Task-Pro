@@ -16,6 +16,8 @@ export class HeaderComponent {
   onAddTask() {
     const dialogRef = this.dialog.open(TaskFormComponent, {
       width: '450px',
+      maxHeight: '80vh',
+      panelClass: 'custom-dialog-container'
     });
     
     dialogRef.afterClosed().subscribe(result => {

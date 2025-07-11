@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of, Observable, BehaviorSubject } from 'rxjs'
 import { Task } from '../models/task.model';
-import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
