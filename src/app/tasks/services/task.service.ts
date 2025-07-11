@@ -27,6 +27,19 @@ getTasks(): Observable<Task[]> {
   return this.tasks$.asObservable(); // 'of' es una función de RxJS que crea un Observable a partir de un valor.
 }
 
+fetchAndSetTasks(): Observable<Task[]> {
+    return this.http.get<TodosApiResponse>(this.apiurl).pipe(
+      map((response) => response.todos),  
+      tap(tasks => this.tasks$.next(tasks)),
+      catchError(this.handleError)
+    )
+}
+
+private handleError(error: any): Observable<never>{
+  console.log('Ocurrio un error en le servicio  de tareas', error);
+  return throwError('Algo salio mal, por favor intente denuevo mas tarde')
+}
+
 addTask(taskData: { title: string; description: string }): void {
   const newTask: Task = {
     id: this.tasks$.value.length + 1,
