@@ -2,6 +2,7 @@
   import { Subscription } from 'rxjs';
   import { Task } from '../../models/task.model';
   import { TaskService } from '../../services/task.service';
+  import { MaterialModule } from '../../../shared/material.module';
 
   @Component({
     selector: 'app-task-list',
@@ -55,17 +56,5 @@
         this.tasksSubscription.unsubscribe();
       }
     }
-
-
-
-      // funcion sin usar onpush
-      // this.taskService.updateTask(taskToUpdate).subscribe(updatedTask =>{
-    //   console.log('tarea actualizada a travez del servicio', updatedTask);
-      
-    //   const index = this.tasks.findIndex(t => t.id === updatedTask.id);
-    //   if(index !== -1){
-    //     this.tasks[index] = updatedTask;
-    //   }
-    // });
   }
   

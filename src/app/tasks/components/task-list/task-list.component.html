@@ -1,26 +1,19 @@
 <div class="task-list-container">
     <h1>Mi Dashbord de Tareas en Angular</h1>
 
-    <!-- sin material ui usamos el componente de items
-    <div class="task-items">
-        <app-task-item 
-            *ngFor="let currentTask of tasks"
-            [task]="currentTask"
-            (toggleComplete)="handleToggleComplete($event)">
-        </app-task-item>
-    </div> -->
+    <div 
+        *ngIf="isLoading" 
+        class="loading-spinner-container">
+        <mat-spinner diameter="50"></mat-spinner>
+        <p>Cargando Tareas...</p>
+    </div>
 
+    <div
+        *ngIf="!isLoading && error"
+        class="error-container">
+        <mat-icon color="warm">error_outline</mat-icon>
+        <h2>!Oops¡ Algo salio mal</h2>
+        <p>{{ error }}</p>
+    </div>
 
-    <!-- usamos el componente de lista de Material ui-->
-    <mat-list role="list">
-        <mat-list-item 
-        class="multiline-item" 
-        role="listitem" 
-        *ngFor="let currentTask of tasks; trackBy: trackByTaskId">
-            <app-task-item 
-                [task]="currentTask"
-                (toggleComplete)="handleToggleComplete($event)">
-            </app-task-item>
-        </mat-list-item>
-    </mat-list>
 </div>
