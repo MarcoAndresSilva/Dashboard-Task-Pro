@@ -49,9 +49,16 @@
     }
 
     handleUpdateTask(taskToUpdate: Task): void {
-      //TODO logica para llamar al futuro updateTask en el servicio
-      console.log('actualizando tarea, logica pendiente', taskToUpdate);
-      
+      console.log('Iniciando actualizacion de la Tarea', taskToUpdate);
+      this.taskService.updateTask(taskToUpdate).subscribe({
+        next: (updateTask) => {
+          console.log('Tarea actualizada correctamente', updateTask);
+        },
+        error: err => { 
+          this.error = err;
+          console.error('Error al actualizar la tarea', err);
+        }
+      });
     }
 
     trackByTaskId(index: number, task: Task): string | number {
