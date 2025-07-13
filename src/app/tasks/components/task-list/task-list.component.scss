@@ -19,3 +19,41 @@ h1 {
   align-items: center;
   padding: 2rem 0;
 }
+
+// Estilos para los contenedores de estado
+.loading-container,
+.error-container,
+.empty-state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: #757575; // Un gris suave
+  border: 2px dashed #e0e0e0;
+  border-radius: 8px;
+  margin-top: 20px;
+
+  mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    margin: 0 0 8px 0;
+    color: #424242;
+  }
+}
+
+// Estilos específicos para el contenedor de error
+.error-container {
+  border-color: #f44336; // Rojo de Material
+  color: #f44336;
+
+  h2 {
+    color: #f44336;
+  }
+}

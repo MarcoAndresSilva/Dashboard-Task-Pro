@@ -2,7 +2,6 @@
   import { Subscription } from 'rxjs';
   import { Task } from '../../models/task.model';
   import { TaskService } from '../../services/task.service';
-  import { MaterialModule } from '../../../shared/material.module';
 
   @Component({
     selector: 'app-task-list',
@@ -41,7 +40,11 @@
 
     handleDeleteTask(taskToDelete: Task): void{
       this.taskService.deleteTask(taskToDelete.id).subscribe({
-        error: err => this.error = err
+        next: () => console.log('Tarea, ${taskToDelete.id} eliminada'),
+        error: err => { 
+          this.error = err;
+          console.error('Error al eliminar la tarea', err);
+        }
       });
     }
 
@@ -49,6 +52,10 @@
       //TODO logica para llamar al futuro updateTask en el servicio
       console.log('actualizando tarea, logica pendiente', taskToUpdate);
       
+    }
+
+    trackByTaskId(index: number, task: Task): string | number {
+      return task.id;
     }
 
     ngOnDestroy(): void {

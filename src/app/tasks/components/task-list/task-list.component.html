@@ -1,6 +1,7 @@
 <div class="task-list-container">
     <h1>Mi Dashbord de Tareas en Angular</h1>
 
+    <!-- Estado de carga  -->
     <div 
         *ngIf="isLoading" 
         class="loading-spinner-container">
@@ -8,6 +9,7 @@
         <p>Cargando Tareas...</p>
     </div>
 
+    <!-- estado de error -->
     <div
         *ngIf="!isLoading && error"
         class="error-container">
@@ -15,5 +17,28 @@
         <h2>!Oops¡ Algo salio mal</h2>
         <p>{{ error }}</p>
     </div>
+
+    <!-- estado de exito y estado vacio -->
+    <div *ngIf="!isLoading && !error">
+        <div *ngIf="tasks.length === 0" class="empty-state-container">
+            <mat-icon>inbox</mat-icon>
+            <h2>No hay tareas</h2>
+            <p>¡Crea una nueva tarea para comenzar!</p>
+        </div>
+        <mat-list role="list" *ngIf="tasks.length > 0">
+            <mat-list-item
+            class="multiline-item"
+            role="listitem"
+            *ngFor="let currentTask of tasks; trackBy: trackByTaskId">
+
+                <app-task-item
+                    [task]="currentTask"
+                    (update)="handleUpdateTask($event)"
+                    (delete)="handleDeleteTask($event)">
+                </app-task-item>
+            </mat-list-item>
+        </mat-list>
+    </div>
+
 
 </div>
