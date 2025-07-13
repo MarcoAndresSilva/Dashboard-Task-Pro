@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogActions } from '@angular/material/dialog';
 import { MatDialogContent } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 const materialModules = [
@@ -20,7 +21,8 @@ const materialModules = [
   MatFormFieldModule,
   MatDialogActions,
   MatDialogContent,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({

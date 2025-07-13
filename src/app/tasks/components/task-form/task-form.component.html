@@ -4,7 +4,7 @@
   <div mat-dialog-content [formGroup]="taskForm">
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Título</mat-label>
-      <input matInput formControlName="title" cdkFocusInitial />
+      <input matInput formControlName="todo" cdkFocusInitial />
       <mat-error *ngIf="taskForm.get('title')?.hasError('required')">
         El título es requerido.
       </mat-error>

@@ -17,7 +17,7 @@ export class TaskFormComponent  implements OnInit {
     private dialogRef: MatDialogRef<TaskFormComponent>
   ) {
     this.taskForm = this.formBuilder.group({
-      title: ['', [Validators.required, Validators.minLength(3)]],
+      todo: ['', [Validators.required, Validators.minLength(3)]],
       description: ['']
     });
   }

@@ -34,14 +34,14 @@ fetchAndSetTasks(): Observable<Task[]> {
     )
 }
 
-addTask(taskData:{title: string; description: string}):Observable<Task>{
-  const newTaskPayLoad = {
-    todo: taskData.title,
+addTask(taskData:{todo: string; description: string}):Observable<Task>{
+  const newTaskPayload = {
+    todo: taskData.todo,
     completed: false,
     userId: 5,
   };
 
-  return this.http.post<Task>(`${this.apiUrl}/add`, newTaskPayLoad).pipe(
+  return this.http.post<Task>(`${this.apiUrl}/add`, newTaskPayload).pipe(
     tap((newTaskFromApi) => {
       console.log('Nueva tarea creada via API', newTaskFromApi);
       
