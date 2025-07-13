@@ -40,13 +40,27 @@ addTask(taskData:{todo: string; description: string}):Observable<Task>{
     completed: false,
     userId: 5,
   };
-
   return this.http.post<Task>(`${this.apiUrl}/add`, newTaskPayload).pipe(
     tap((newTaskFromApi) => {
       console.log('Nueva tarea creada via API', newTaskFromApi);
       
       const currentTasks = this.tasks$.getValue();
       this.tasks$.next([...currentTasks, newTaskFromApi]);
+    }),
+    catchError(this.handleError)
+  );
+}
+
+updateTask(taskToUpdate: Task): Observable<Task> {
+  const updateTaskPayload = {
+    completed: !taskToUpdate.completed
+  };
+  return this.http.put<Task>(`${this.apiUrl}/${taskToUpdate.id}`, updateTaskPayload).pipe(
+    tap(updatedTaskFromApi => {
+      const currentTasks = this.tasks$.getValue();
+      const updatedTasks = currentTasks.map(task => 
+        task.id === updatedTaskFromApi.id ? updatedTaskFromApi : task);
+      this.tasks$.next(updatedTasks);
     }),
     catchError(this.handleError)
   );
