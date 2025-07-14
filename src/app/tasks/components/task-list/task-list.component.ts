@@ -20,7 +20,7 @@
     constructor(private taskService: TaskService) { } // inyectamos el servicio
 
     ngOnInit(): void { 
-      this.tasksSubscription = this.taskService.getTasks().subscribe( tasks => {
+      this.tasksSubscription = this.taskService.getTasks().subscribe( tasks => { // el behaviorSubject se suscribe al observable que retorna el servicio 
         this.tasks = tasks;
         this.isLoading = false;
         console.log('tareas obtenidas del servicios, lista de tareas actualizadas en el componente', this.tasks);
