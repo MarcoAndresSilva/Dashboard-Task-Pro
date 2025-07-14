@@ -39,8 +39,8 @@
     }
 
     handleDeleteTask(taskToDelete: Task): void{
-      this.taskService.deleteTask(taskToDelete.id).subscribe({
-        next: () => console.log('Tarea, ${taskToDelete.id} eliminada'),
+      this.taskService.deleteTask(taskToDelete).subscribe({
+        next: () => console.log(`Tarea, ${taskToDelete.id} eliminada correctamente`),
         error: err => { 
           this.error = err;
           console.error('Error al eliminar la tarea', err);
