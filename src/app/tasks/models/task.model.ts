@@ -4,4 +4,5 @@ export interface Task {
     completed: boolean;
     userId: number;
     description?: string;
+    isLocal?: boolean;
 }
