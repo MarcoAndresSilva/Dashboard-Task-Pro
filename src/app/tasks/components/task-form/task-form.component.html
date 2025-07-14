@@ -1,25 +1,30 @@
-<div class="task-form-container">
-  <h1 mat-dialog-title>Nueva Tarea</h1>
+<!-- Título del diálogo, usa la directiva mat-dialog-title -->
+<h1 mat-dialog-title>Crear Nueva Tarea</h1>
 
-  <div mat-dialog-content [formGroup]="taskForm">
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Título</mat-label>
-      <input matInput formControlName="todo" cdkFocusInitial />
-      <mat-error *ngIf="taskForm.get('title')?.hasError('required')">
-        El título es requerido.
-      </mat-error>
-    </mat-form-field>
+<!-- Contenido del diálogo, usa la directiva mat-dialog-content -->
+<div mat-dialog-content [formGroup]="taskForm">
+  <p>Por favor, introduce los detalles de la nueva tarea.</p>
+  
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Título de la Tarea</mat-label>
+    <input matInput formControlName="todo" placeholder="Ej: Aprender sobre RxJS" cdkFocusInitial>
+    <mat-icon matSuffix>title</mat-icon>
+    <mat-error *ngIf="taskForm.get('todo')?.hasError('required')">
+      El título es obligatorio.
+    </mat-error>
+    <mat-error *ngIf="taskForm.get('todo')?.hasError('minlength')">
+      Debe tener al menos 3 caracteres.
+    </mat-error>
+  </mat-form-field>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Descripción (Opcional)</mat-label>
-      <textarea matInput formControlName="description"></textarea>
-    </mat-form-field>
-  </div>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Descripción (Opcional)</mat-label>
+    <textarea matInput formControlName="description" placeholder="Añade detalles adicionales aquí..."></textarea>
+  </mat-form-field>
+</div>
 
-  <div mat-dialog-actions align="end">
-    <button mat-stroked-button color="warn" (click)="onCancel()">Cancelar</button>
-    <button mat-flat-button color="primary" (click)="onSave()" [disabled]="taskForm.invalid">
-      Guardar
-    </button>
-  </div>
+<!-- Acciones del diálogo, usa la directiva mat-dialog-actions -->
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="taskForm.invalid">Guardar Tarea</button>
 </div>

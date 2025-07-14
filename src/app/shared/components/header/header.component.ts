@@ -22,7 +22,7 @@ export class HeaderComponent {
     const dialogRef = this.dialog.open(TaskFormComponent, {
       width: '450px',
       maxHeight: '80vh',
-      panelClass: 'custom-dialog-container'
+      panelClass: 'mat-typography'
     });
     
     dialogRef.afterClosed().subscribe(result => {
