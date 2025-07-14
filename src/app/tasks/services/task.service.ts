@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, throwError } from 'rxjs'
+import { Observable, BehaviorSubject, throwError, of } from 'rxjs'
 import { map, catchError, tap } from 'rxjs/operators';
 import { Task } from '../models/task.model';
 
@@ -53,9 +53,19 @@ addTask(taskData:{todo: string; description: string}):Observable<Task>{
 }
 
 updateTask(taskToUpdate: Task): Observable<Task> {
-  const updateTaskPayload = {
-    completed: !taskToUpdate.completed
-  };
+
+  //sila la tarea es local no ghacmeos la llamada al API
+  if(taskToUpdate.isLocal){
+    console.log('Actualizando tarea local', taskToUpdate);
+    const updateTask = {...taskToUpdate, completed: !taskToUpdate.completed};
+    const currentTasks = this.tasks$.getValue();
+    const updatedTasks = currentTasks.map(task => task.id === updateTask.id ? updateTask : task);
+    this.tasks$.next(updatedTasks);
+    return of(updateTask);
+  }
+
+
+  const updateTaskPayload = { completed: !taskToUpdate.completed };
   return this.http.put<Task>(`${this.apiUrl}/${taskToUpdate.id}`, updateTaskPayload).pipe(
     tap(updatedTaskFromApi => {
       const currentTasks = this.tasks$.getValue();
@@ -67,11 +77,19 @@ updateTask(taskToUpdate: Task): Observable<Task> {
   );
 }
 
-deleteTask(id:string | number): Observable<Task>{
-  return this.http.delete<Task>(`${this.apiUrl}/${id}`).pipe(
+deleteTask(taskToDelete : Task): Observable<Task>{
+  // si la tarea es local no hacemos una llamada a la API
+  if(taskToDelete.isLocal){ 
+    const currentTasks = this.tasks$.getValue();
+    const updatedTasks = currentTasks.filter(task => task.id !== taskToDelete.id);
+    this.tasks$.next(updatedTasks);
+    return of(taskToDelete);
+  }
+
+  return this.http.delete<Task>(`${this.apiUrl}/${taskToDelete.id}`).pipe(
     tap(() =>{
       const currenTasks = this.tasks$.getValue();
-      const updateTask  = currenTasks.filter(task => task.id !== id);
+      const updateTask  = currenTasks.filter(task => task.id !== taskToDelete.id);
       this.tasks$.next(updateTask);
     }),
     catchError(this.handleError)
