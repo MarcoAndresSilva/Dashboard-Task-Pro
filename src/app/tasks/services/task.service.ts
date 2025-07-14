@@ -43,10 +43,11 @@ addTask(taskData:{todo: string; description: string}):Observable<Task>{
   return this.http.post<Task>(`${this.apiUrl}/add`, newTaskPayload).pipe(
     tap((newTaskFromApi) => {
       console.log('Nueva tarea creada via API', newTaskFromApi);
-      
+      const localTask = {...newTaskFromApi, isLocal: true}; // marcamos la tarea como local
       const currentTasks = this.tasks$.getValue();
-      this.tasks$.next([...currentTasks, newTaskFromApi]);
+      this.tasks$.next([...currentTasks, localTask]);
     }),
+    map(newTaskFromApi => ({...newTaskFromApi, isLocal:true})), // mapeamos la tarea para agregar la propiedad isLocal
     catchError(this.handleError)
   );
 }
