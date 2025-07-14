@@ -1,16 +1,19 @@
-.full-width {
-  width: 100%;
+// Selector global para apuntar al panel del diálogo y darle un borde redondeado más agradable
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+    border-radius: 12px !important;
 }
 
+// Título del diálogo
 h1[mat-dialog-title] {
-  color: #3f51b5; // Color primario de Indigo
-  border-bottom: 1px solid #e0e0e0;
+  // Usamos variables CSS que Material sí expone para los colores
+  color: var(--mat-dialog-title-text-color);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12); // Separador sutil
   padding-bottom: 16px;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
 }
 
+// Contenido
 div[mat-dialog-content] {
-  padding-top: 20px;
   padding-bottom: 8px;
 
   .mat-form-field {
@@ -18,7 +21,10 @@ div[mat-dialog-content] {
   }
 }
 
+// Acciones
 div[mat-dialog-actions] {
+  padding: 8px 24px 16px 24px;
+  
   button:not(:last-child) {
     margin-right: 8px;
   }
