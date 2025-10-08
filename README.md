@@ -1,59 +1,47 @@
-# TODO ACTUALIZAR TODO EL README PARA EJECUCIÓN DashboardTask
+# 📊 DashboardTask – Task Management App (Angular 19)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.7.
+**DashboardTask** is a modern and responsive **task management web application** built with **Angular 19**.  
+It allows you to **create, edit, update, and delete tasks** through a simple and intuitive interface — a complete **CRUD project** designed to showcase clean architecture, reusable components, and scalable frontend development practices.
 
-## Development server
+This project was developed as a **portfolio piece** to demonstrate strong skills in Angular development, component-based architecture, and application state management.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## 🚀 Features
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- ✅ **Create Tasks:** Add new tasks with title, description, and status.  
+- ✏️ **Edit Tasks:** Update task details directly from the dashboard.  
+- ❌ **Delete Tasks:** Remove tasks quickly and efficiently.  
+- 📋 **List View:** Display all tasks in a clean, responsive UI.  
+- 🔄 **Real-Time Updates:** Automatic UI refresh when tasks are created, updated, or deleted.  
+- 🧱 **Reusable Components:** Modular structure following Angular best practices.  
+- 🧪 **Scalable Architecture:** Prepared for future features such as filtering, sorting, and authentication.
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🛠️ Tech Stack
 
-```bash
-ng generate component component-name
-```
+- **Framework:** Angular 19  
+- **Language:** TypeScript  
+- **Styling:** SCSS / Angular Material  
+- **Build Tool:** Angular CLI  
+- **State Management:** RxJS / Services  
+- **Testing:** Jasmine & Karma (Unit Tests)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 📂 Project Structure
 
 ```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+dashboard-task/
+├─ src/
+│  ├─ app/
+│  │  ├─ components/      # Reusable UI components
+│  │  ├─ pages/           # Main views (Task Dashboard, Task Form, etc.)
+│  │  ├─ services/        # Business logic & API communication
+│  │  └─ models/          # TypeScript interfaces and models
+│  ├─ assets/             # Static assets
+│  └─ environments/       # Environment configurations
+├─ angular.json
+├─ package.json
+└─ README.md
