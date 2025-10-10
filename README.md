@@ -26,7 +26,7 @@ This project was developed as a **portfolio piece** to demonstrate strong skills
 - **Styling:** SCSS / Angular Material  
 - **Build Tool:** Angular CLI  
 - **State Management:** RxJS / Services  
-- **Testing:** Jasmine & Karma (Unit Tests)
+- **Testing:** Jasmine & Karma
 
 ---
 
