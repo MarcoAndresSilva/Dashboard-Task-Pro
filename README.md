@@ -7,7 +7,7 @@ This project was developed as a **portfolio piece** to demonstrate strong skills
 
 ---
 
-## 🚀 Demo en vivo (proximamente)
+## 🚀 Demo live (comming soon)
 
 
 ## 🚀 Features
