@@ -1,4 +1,4 @@
-# 📊 DashboardTask – Task Management App (Angular 19)
+# 📊 DashboardTask – Task Management App Angular 19
 
 **DashboardTask** is a modern and responsive **task management web application** built with **Angular 19**.  
 It allows you to **create, edit, update, and delete tasks** through a simple and intuitive interface — a complete **CRUD project** designed to showcase clean architecture, reusable components, and scalable frontend development practices.
